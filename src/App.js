@@ -19,7 +19,7 @@ function Buttons(props) {
       <button id="two" onClick={props.numbers} value="2">2</button>
       <button id="three" onClick={props.numbers} value="3">3</button>
       <button className="jumbo" onClick={props.numbers} id="zero" value="0">0</button>
-      <button id="decimal" value=".">.</button>
+      <button id="decimal" onClick={props.decimals} value=".">.</button>
       <button id="equals" onClick={props.evaluate} value="=">=</button>
     </div>
   );
@@ -92,6 +92,25 @@ function App() {
     }
   };
 
+  const handleDecimals = () => {
+    if (evaluated) {
+      setCurrentValue('0.');
+      setFormula('0.');
+      setEvaluated(false);
+    } else if (!currentValue.includes('.') && currentValue !== 'Digit Limit Met') {
+      setEvaluated(false);
+      if (currentValue.length > 21) {
+        maxDigitWarning();
+      } else if (endsWithOperator.test(formula) || (currentValue === '0' && formula === '')) {
+        setCurrentValue('0.')
+        setFormula(formula + '0.');
+      } else {
+        setCurrentValue(currentValue + '.');
+        setFormula(formula + '.');
+      }
+    }
+  }
+
   const initialize = () => {
     setCurrentValue('0');
     setPreviousValue('0');
@@ -104,7 +123,13 @@ function App() {
       <div className="calculator">
         <div className="formulaScreen">{formula}</div>
         <div className="outputScreen">{currentValue}</div>
-        <Buttons initialize={initialize} numbers={handleNumbers} operators={handleOperators} evaluate={handleEvaluation}/>
+        <Buttons 
+          initialize={initialize} 
+          numbers={handleNumbers} 
+          operators={handleOperators} 
+          evaluate={handleEvaluation} 
+          decimals={handleDecimals}
+        />
       </div>
     </div>
   );
