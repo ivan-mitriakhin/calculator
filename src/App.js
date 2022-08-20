@@ -122,7 +122,7 @@ function App() {
     <div id="app">
       <div className="calculator">
         <div className="formulaScreen">{formula}</div>
-        <div className="outputScreen">{currentValue}</div>
+        <div className="outputScreen" id="display">{currentValue}</div>
         <Buttons 
           initialize={initialize} 
           numbers={handleNumbers} 
