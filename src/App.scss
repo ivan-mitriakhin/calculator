@@ -1,0 +1,99 @@
+$mainColor: #fff;
+$contrastColor: #000;
+
+#app {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.calculator {
+    width: 330px;
+    position: relative;
+    background-color: $contrastColor;
+    border-radius: 1%;
+    padding: 5px;
+
+    .formulaScreen {
+        min-height: 20px;
+        font-family: 'Digital';
+        font-size: 20px;
+        color: orange;
+        vertical-align: text-top;
+        text-align: right;
+        line-height: 20px;
+        word-wrap: break-word;
+    }
+
+    .outputScreen {
+        font-size: 29px;
+        font-family: 'Digital';
+        color: $mainColor;
+        text-align: right;
+        line-height: 35px;
+    }
+
+    .buttons {
+
+        button {
+            position: relative;
+            height: 65px;
+            width: 80px;
+            color: $mainColor;
+            outline: 1px solid $contrastColor;
+            border: none;
+            border-radius: 1%;
+            background: #464545;
+            font-family: Share Tech Mono, monospace;
+            font-size: 20px;
+            cursor: default;
+
+            &:hover {
+                color: $contrastColor;
+                outline: 1px solid $mainColor;
+                z-index: 1;
+            }
+        }
+
+        .jumbo {
+            width: 160px;
+        }
+
+        #clear {
+            background-color: orange;
+        }
+
+        #divide, #multiply, #subtract, #add {
+            background-color: rgb(97, 96, 96);
+        }
+
+        #equals {
+            background: rgb(192, 1, 1);
+            height: 130px;
+            position: absolute;
+            bottom: 5px;
+        }
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .calculator {
+        width: 260px;
+        .buttons {
+            button {
+                height: 47.5px;
+                width: 62.5px;
+            }
+
+            .jumbo {
+                width: 125px;
+            }
+
+            #equals {
+                height: 95px;
+            }
+        }
+      
+    }
+}

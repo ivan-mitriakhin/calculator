@@ -1,0 +1,80 @@
+#app {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.calculator {
+  width: 330px;
+  position: relative;
+  background-color: #000;
+  border-radius: 1%;
+  padding: 5px;
+}
+.calculator .formulaScreen {
+  min-height: 20px;
+  font-family: "Digital";
+  font-size: 20px;
+  color: orange;
+  vertical-align: text-top;
+  text-align: right;
+  line-height: 20px;
+  word-wrap: break-word;
+}
+.calculator .outputScreen {
+  font-size: 29px;
+  font-family: "Digital";
+  color: #fff;
+  text-align: right;
+  line-height: 35px;
+}
+.calculator .buttons button {
+  position: relative;
+  height: 65px;
+  width: 80px;
+  color: #fff;
+  outline: 1px solid #000;
+  border: none;
+  border-radius: 1%;
+  background: #464545;
+  font-family: Share Tech Mono, monospace;
+  font-size: 20px;
+  cursor: default;
+}
+.calculator .buttons button:hover {
+  color: #000;
+  outline: 1px solid #fff;
+  z-index: 1;
+}
+.calculator .buttons .jumbo {
+  width: 160px;
+}
+.calculator .buttons #clear {
+  background-color: orange;
+}
+.calculator .buttons #divide, .calculator .buttons #multiply, .calculator .buttons #subtract, .calculator .buttons #add {
+  background-color: rgb(97, 96, 96);
+}
+.calculator .buttons #equals {
+  background: rgb(192, 1, 1);
+  height: 130px;
+  position: absolute;
+  bottom: 5px;
+}
+
+@media screen and (max-width: 350px) {
+  .calculator {
+    width: 260px;
+  }
+  .calculator .buttons button {
+    height: 47.5px;
+    width: 62.5px;
+  }
+  .calculator .buttons .jumbo {
+    width: 125px;
+  }
+  .calculator .buttons #equals {
+    height: 95px;
+  }
+}/*# sourceMappingURL=App.css.map */
