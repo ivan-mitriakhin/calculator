@@ -43,7 +43,7 @@
   cursor: default;
 }
 .calculator .buttons button:hover {
-  color: #000;
+  color: orange;
   outline: 1px solid #fff;
   z-index: 1;
 }

@@ -50,7 +50,7 @@ $contrastColor: #000;
             cursor: default;
 
             &:hover {
-                color: $contrastColor;
+                color: orange;
                 outline: 1px solid $mainColor;
                 z-index: 1;
             }
