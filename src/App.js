@@ -20,7 +20,7 @@ function Buttons(props) {
       <button id="three" onClick={props.numbers} value="3">3</button>
       <button className="jumbo" onClick={props.numbers} id="zero" value="0">0</button>
       <button id="decimal" value=".">.</button>
-      <button id="equals" value="=">=</button>
+      <button id="equals" onClick={props.evaluate} value="=">=</button>
     </div>
   );
 }
@@ -42,6 +42,20 @@ function App() {
     setTimeout(() => { setCurrentValue(previousValue) }, 1000);
   };
 
+  const handleEvaluation = () => {
+    if (currentValue !== 'Digit Limit Met') {
+      while (endsWithOperator.test(formula)) {
+        formula = formula.slice(0, -1);
+      }
+      formula = formula.replace(/x/g, '*').replace(/-{2}/g, '+0+');
+      let answer = Math.round(1000000000000 * eval(formula)) / 1000000000000;
+      setCurrentValue(answer.toString());
+      setFormula(formula.replace(/\*/g, 'x').replace('+0+', '--') + '=' + answer);
+      setPreviousValue(answer.toString());
+      setEvaluated(true);
+    }
+  }
+
   const handleOperators = (event) => {
     if (currentValue !== 'Digit Limit Met') {
       const value = event.target.value;
@@ -50,14 +64,11 @@ function App() {
       if (evaluated) {
         setFormula(previousValue + value);
       } else if (!endsWithOperator.test(formula)) {
-        console.log('1')
         setPreviousValue(formula);
         setFormula(formula + value);
       } else if (!endsWithNegativeSign.test(formula)) {
-        console.log('2')
         setFormula((endsWithNegativeSign.test(formula + value) ? formula : previousValue) + value)
       } else if (value !== '-') {
-        console.log('3')
         setFormula(previousValue + value);
       } 
     }
@@ -93,7 +104,7 @@ function App() {
       <div className="calculator">
         <div className="formulaScreen">{formula}</div>
         <div className="outputScreen">{currentValue}</div>
-        <Buttons initialize={initialize} numbers={handleNumbers} operators={handleOperators}/>
+        <Buttons initialize={initialize} numbers={handleNumbers} operators={handleOperators} evaluate={handleEvaluation}/>
       </div>
     </div>
   );
